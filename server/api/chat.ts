@@ -1,4 +1,4 @@
-import { streamText, appendClientMessage } from "ai";
+import { streamText } from "ai";
 import { createOpenAI } from "@ai-sdk/openai";
 
 async function fetchAndGetText(url: string) {

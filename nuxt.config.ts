@@ -20,4 +20,13 @@ export default defineNuxtConfig({
   runtimeConfig: {
     openaiApiKey: process.env.OPENAI_API_KEY,
   },
+  app: {
+    head: {
+      title: "John Long",
+      meta: [{ name: "description", content: "John Long" }],
+      bodyAttrs: {
+        class: "bg-slate-900",
+      },
+    },
+  },
 });
