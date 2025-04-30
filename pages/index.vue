@@ -26,7 +26,14 @@ const handleKeyDown = (event: KeyboardEvent) => {
           :id="`chat-bubble-${index}`"
           :key="m.id ? m.id : index"
         >
-          <ChatBubble :message="m" :status="status" />
+          <ChatBubble
+            :message="m"
+            :streaming="
+              status === 'streaming' && messages.length - 1 === index
+                ? status
+                : false
+            "
+          />
         </div>
       </div>
       <div

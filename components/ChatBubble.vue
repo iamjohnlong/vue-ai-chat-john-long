@@ -3,7 +3,7 @@ import type { Message } from "ai";
 
 const props = defineProps<{
   message: Message;
-  status: string;
+  streaming: boolean;
 }>();
 </script>
 
@@ -19,7 +19,7 @@ const props = defineProps<{
       :class="{
         'bg-slate-200/10 ml-12': props.message.role === 'user',
         'bg-slate-200/20 mr-12': props.message.role === 'assistant',
-        'bg-slate-200/10': props.status === 'streaming',
+        'animate-pulse': props.streaming,
       }"
     >
       <div v-for="(part, partIndex) in props.message.parts" :key="partIndex">

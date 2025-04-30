@@ -2,19 +2,14 @@ import { streamText } from "ai";
 import { createOpenAI } from "@ai-sdk/openai";
 
 async function fetchAndGetText(url: string) {
-  try {
-    const response = await fetch(url);
+  const response = await fetch(url);
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const text = await response.text();
-    return text;
-  } catch (error) {
-    console.error("Failed to fetch or process data:", error);
-    return null;
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
   }
+
+  const text = await response.text();
+  return text;
 }
 
 export default defineLazyEventHandler(async () => {
@@ -25,7 +20,6 @@ export default defineLazyEventHandler(async () => {
   });
 
   const text = await fetchAndGetText("https://www.johnjlong.com");
-  console.log(text);
 
   return defineEventHandler(async (event) => {
     const { messages } = await readBody(event);
